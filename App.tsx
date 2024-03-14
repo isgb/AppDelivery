@@ -52,6 +52,7 @@ export default function App() {
         <Button
           title='ENTRAR'
           onPress={() => {ToastAndroid.show('CLICK', ToastAndroid.LONG)}}
+          color={'orange'}
         />
 
       </View>
