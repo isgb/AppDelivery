@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, View } from 'react-native';
 
 export default function App() {
   return (
@@ -45,8 +45,14 @@ export default function App() {
             style={styles.formTextInput}
             placeholder='Contraseña'
             keyboardType='default'
+            secureTextEntry={true}
           />
         </View>
+
+        <Button
+          title='ENTRAR'
+          onPress={() => {ToastAndroid.show('CLICK', ToastAndroid.LONG)}}
+        />
 
       </View>
       
