@@ -44,7 +44,7 @@ export default function App() {
           <TextInput
             style={styles.formTextInput}
             placeholder='Contraseña'
-            keyboardType='email-address'
+            keyboardType='default'
           />
         </View>
 
