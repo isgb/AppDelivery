@@ -49,11 +49,22 @@ export default function App() {
           />
         </View>
 
-        <Button
-          title='ENTRAR'
-          onPress={() => {ToastAndroid.show('CLICK', ToastAndroid.LONG)}}
-          color={'orange'}
-        />
+
+        <View 
+          style={{ marginTop: 30 }}
+        >
+          <Button
+            title='ENTRAR'
+            onPress={() => {ToastAndroid.show('CLICK', ToastAndroid.LONG)}}
+            color={'orange'}
+          />
+        </View>
+
+        <View style={styles.formRegister}>
+            <Text>No tienes cuenta?</Text>
+            <Text style={styles.formRegisterText}>Registrate</Text>
+        </View>
+
 
       </View>
       
@@ -100,6 +111,19 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     padding: 30
+  },
+  formRegister: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 30,
+  },
+  formRegisterText:{
+    fontStyle: 'italic',
+    color: 'orange',
+    borderBottomWidth: 1,
+    borderBottomColor: 'orange',
+    fontWeight: 'bold',
+    marginLeft:10
   },
   logoContainer:{
     position: 'absolute',
