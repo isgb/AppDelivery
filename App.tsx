@@ -59,7 +59,7 @@ export default function App() {
             onPress={() => {ToastAndroid.show('CLICK', ToastAndroid.LONG)}}
             color={'orange'}
           /> */}
-          <RoundedButton text='ENTRAR'/>
+          <RoundedButton text='LOGIN' onPress={() => ToastAndroid.show('HOLA', ToastAndroid.SHORT)}/>
         </View>
 
         <View style={styles.formRegister}>
