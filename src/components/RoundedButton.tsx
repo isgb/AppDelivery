@@ -1,7 +1,12 @@
 import React from 'react'
+import { TouchableOpacity,Text } from 'react-native'
 
 export const RoundedButton = () => {
   return (
-    <div>RoundedButton</div>
+    <TouchableOpacity
+        onPress={() => {}}
+    >
+        <Text>ENTRAR</Text>
+    </TouchableOpacity>
   )
 }
