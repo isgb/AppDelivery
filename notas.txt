@@ -3,3 +3,4 @@ npx create-expo-app --template
 npm run android
 
 https://colorhunt.co/
+https://reactnative.dev/docs/navigation
