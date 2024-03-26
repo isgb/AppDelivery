@@ -6,13 +6,13 @@ export const HomeScreen = () => {
   return (
     <View style={styles.container}>
     <Image
-      source={ require('./assets/chef.jpg')}
+      source={ require('../../../assets/chef.jpg')}
       style={styles.imageBackground}
     />
 
     <View style={styles.logoContainer}>
       <Image
-        source={ require('./assets/logo.png')}
+        source={ require('../../../assets/logo.png')}
         style={styles.logoImage}
       />
 
@@ -26,7 +26,7 @@ export const HomeScreen = () => {
       <View style={styles.formInput}>
         <Image
           style={styles.formIcon}
-          source={ require('./assets/email.png')}
+          source={ require('../../../assets/email.png')}
         />
 
         <TextInput
@@ -39,7 +39,7 @@ export const HomeScreen = () => {
       <View style={styles.formInput}>
         <Image
           style={styles.formIcon}
-          source={ require('./assets/password.png')}
+          source={ require('../../../assets/password.png')}
         />
 
         <TextInput
