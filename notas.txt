@@ -4,3 +4,5 @@ npm run android
 
 https://colorhunt.co/
 https://reactnative.dev/docs/navigation
+
+npm i @react-navigation/stack

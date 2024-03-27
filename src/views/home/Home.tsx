@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { RoundedButton } from '../../components/RoundedButton';
-import { useNavigation } from '@react-navigation/native';
+import { StackNavigationState, useNavigation } from '@react-navigation/native';
 import { RegisterScreen } from '../register/Register';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../../App';
 
 export const HomeScreen = () => {
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   return (
     <View style={styles.container}>
