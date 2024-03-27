@@ -1,8 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, View } from 'react-native';
+import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { RoundedButton } from '../../components/RoundedButton';
+import { useNavigation } from '@react-navigation/native';
+import { RegisterScreen } from '../register/Register';
 
 export const HomeScreen = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
     <Image
@@ -64,7 +69,11 @@ export const HomeScreen = () => {
 
       <View style={styles.formRegister}>
           <Text>No tienes cuenta?</Text>
-          <Text style={styles.formRegisterText}>Registrate</Text>
+          
+          <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen')}>
+            <Text style={ styles.formRegisterText }>Registrate</Text>
+          </TouchableOpacity>
+
       </View>
 
 
