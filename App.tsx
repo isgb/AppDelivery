@@ -25,7 +25,8 @@ const App = () => {
             name="RegisterScreen" 
             component={RegisterScreen} 
             options={{
-              headerShown: true
+              headerShown: true,
+              title: 'Nuevo Usuario'
             }}    
         />
       </Stack.Navigator>
