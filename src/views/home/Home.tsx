@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     formRegister: {
       flexDirection: 'row',
       justifyContent: 'center',
-      marginTop: 30,
+      marginTop: 20,
     },
     formRegisterText:{
       fontStyle: 'italic',
