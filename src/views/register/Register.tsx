@@ -16,13 +16,38 @@ export const RegisterScreen = () => {
                     source={require('../../../assets/user_image.png')}
                     style={styles.logoImage}
                 />
-
                 <Text style={styles.logoText}>SELECCIONE UNA IMÁGEN</Text>
             </View>
 
             <View style={styles.form}>
 
                 <Text style={styles.formText}>REGISTRARSE</Text>
+
+                <View style={styles.formInput}>
+                    <Image
+                        style={styles.formIcon}
+                        source={require('../../../assets/user.png')}
+                    />
+
+                    <TextInput
+                        style={styles.formTextInput}
+                        placeholder='Nombres'
+                        keyboardType='default'
+                    />
+                </View>
+
+                <View style={styles.formInput}>
+                    <Image
+                        style={styles.formIcon}
+                        source={require('../../../assets/my_user.png')}
+                    />
+
+                    <TextInput
+                        style={styles.formTextInput}
+                        placeholder='Apellidos'
+                        keyboardType='default'
+                    />
+                </View>
 
                 <View style={styles.formInput}>
                     <Image
@@ -40,6 +65,19 @@ export const RegisterScreen = () => {
                 <View style={styles.formInput}>
                     <Image
                         style={styles.formIcon}
+                        source={require('../../../assets/phone.png')}
+                    />
+
+                    <TextInput
+                        style={styles.formTextInput}
+                        placeholder='Teléfono'
+                        keyboardType='numeric'
+                    />
+                </View>
+
+                <View style={styles.formInput}>
+                    <Image
+                        style={styles.formIcon}
                         source={require('../../../assets/password.png')}
                     />
 
@@ -51,18 +89,26 @@ export const RegisterScreen = () => {
                     />
                 </View>
 
+                <View style={styles.formInput}>
+                    <Image
+                        style={styles.formIcon}
+                        source={require('../../../assets/confirm_password.png')}
+                    />
+
+                    <TextInput
+                        style={styles.formTextInput}
+                        placeholder='Confirmar Contraseña'
+                        keyboardType='default'
+                        secureTextEntry={true}
+                    />
+                </View>
+
 
                 <View
                     style={{ marginTop: 30 }}
                 >
-                    {/* <Button
-              title='ENTRAR'
-              onPress={() => {ToastAndroid.show('CLICK', ToastAndroid.LONG)}}
-              color={'orange'}
-            /> */}
-                    <RoundedButton text='LOGIN' onPress={() => ToastAndroid.show('HOLA', ToastAndroid.SHORT)} />
+                    <RoundedButton text='CONFIRMAR' onPress={() => ToastAndroid.show('HOLA', ToastAndroid.SHORT)} />
                 </View>
-
 
             </View>
 
@@ -103,7 +149,7 @@ const styles = StyleSheet.create({
     },
     form: {
         width: '100%',
-        height: '70%',
+        height: '75%',
         backgroundColor: 'white',
         position: 'absolute',
         bottom: 0,
@@ -127,7 +173,7 @@ const styles = StyleSheet.create({
     logoContainer: {
         position: 'absolute',
         alignSelf: 'center',
-        top: '5%',
+        top: '3%',
         alignItems: 'center'
     },
     logoImage: {
@@ -137,7 +183,7 @@ const styles = StyleSheet.create({
     logoText: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 15,
         marginTop: 10,
         fontWeight: 'bold'
     },
