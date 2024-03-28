@@ -74,7 +74,10 @@ export const HomeScreen = () => {
           onPress={() => {ToastAndroid.show('CLICK', ToastAndroid.LONG)}}
           color={'orange'}
         /> */}
-        <RoundedButton text='LOGIN' onPress={() => ToastAndroid.show('HOLA', ToastAndroid.SHORT)}/>
+        <RoundedButton text='LOGIN' onPress={ () => {
+          console.log('Email: ' + email); 
+          console.log('Password: ' + password); 
+        }}/>
       </View>
 
       <View style={styles.formRegister}>
