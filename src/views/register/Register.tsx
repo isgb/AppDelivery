@@ -13,16 +13,16 @@ export const RegisterScreen = () => {
 
             <View style={styles.logoContainer}>
                 <Image
-                    source={require('../../../assets/logo.png')}
+                    source={require('../../../assets/user_image.png')}
                     style={styles.logoImage}
                 />
 
-                <Text style={styles.logoText}>FOOD APP</Text>
+                <Text style={styles.logoText}>SELECCIONE UNA IMÁGEN</Text>
             </View>
 
             <View style={styles.form}>
 
-                <Text style={styles.formText}>INGRESAR</Text>
+                <Text style={styles.formText}>REGISTRARSE</Text>
 
                 <View style={styles.formInput}>
                     <Image
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     },
     form: {
         width: '100%',
-        height: '40%',
+        height: '70%',
         backgroundColor: 'white',
         position: 'absolute',
         bottom: 0,
@@ -127,7 +127,8 @@ const styles = StyleSheet.create({
     logoContainer: {
         position: 'absolute',
         alignSelf: 'center',
-        top: '15%'
+        top: '5%',
+        alignItems: 'center'
     },
     logoImage: {
         width: 100,
