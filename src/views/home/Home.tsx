@@ -5,8 +5,12 @@ import { StackNavigationState, useNavigation } from '@react-navigation/native';
 import { RegisterScreen } from '../register/Register';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../App';
+import { useState } from 'react';
 
 export const HomeScreen = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
@@ -40,6 +44,8 @@ export const HomeScreen = () => {
           style={styles.formTextInput}
           placeholder='Correo electrónico'
           keyboardType='email-address'
+          value={email}
+          onChangeText={ text => setEmail(text)}
         />
       </View>
 
@@ -53,7 +59,9 @@ export const HomeScreen = () => {
           style={styles.formTextInput}
           placeholder='Contraseña'
           keyboardType='default'
-          secureTextEntry={true}
+          secureTextEntry={true} 
+          value={password}
+          onChangeText={ text => setPassword(text)}
         />
       </View>
 
