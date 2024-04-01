@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
-import { RoundedButton } from '../../components/RoundedButton';
+import { RoundedButton } from '../../Presentation/components/RoundedButton';
 import { StackNavigationState, useNavigation } from '@react-navigation/native';
 import { RegisterScreen } from '../register/Register';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../App';
+import { RootStackParamList } from '../../../../App';
 import { useState } from 'react';
 
 export const HomeScreen = () => {
@@ -17,13 +17,13 @@ export const HomeScreen = () => {
   return (
     <View style={styles.container}>
     <Image
-      source={ require('../../../assets/chef.jpg')}
+      source={ require('../../../../assets/chef.jpg')}
       style={styles.imageBackground}
     />
 
     <View style={styles.logoContainer}>
       <Image
-        source={ require('../../../assets/logo.png')}
+        source={ require('../../../../assets/logo.png')}
         style={styles.logoImage}
       />
 
@@ -37,7 +37,7 @@ export const HomeScreen = () => {
       <View style={styles.formInput}>
         <Image
           style={styles.formIcon}
-          source={ require('../../../assets/email.png')}
+          source={ require('../../../../assets/email.png')}
         />
 
         <TextInput
@@ -52,7 +52,7 @@ export const HomeScreen = () => {
       <View style={styles.formInput}>
         <Image
           style={styles.formIcon}
-          source={ require('../../../assets/password.png')}
+          source={ require('../../../../assets/password.png')}
         />
 
         <TextInput
