@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
-import { RoundedButton } from '../../Presentation/components/RoundedButton';
+import { RoundedButton } from '../../../Presentation/components/RoundedButton';
 import { StackNavigationState, useNavigation } from '@react-navigation/native';
 import { RegisterScreen } from '../register/Register';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -9,8 +9,6 @@ import { useState } from 'react';
 
 export const HomeScreen = () => {
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
