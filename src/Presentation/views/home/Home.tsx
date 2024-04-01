@@ -10,7 +10,7 @@ import useViewModel from './ViewModel'
 
 export const HomeScreen = () => {
 
-  const { email, password } = useViewModel();
+  const { email, password, onChange} = useViewModel();
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
@@ -45,7 +45,7 @@ export const HomeScreen = () => {
           placeholder='Correo electrónico'
           keyboardType='email-address'
           value={email}
-          onChangeText={ text => setEmail(text)}
+          onChangeText={ text => onChange('email',text)}
         />
       </View>
 
@@ -61,7 +61,7 @@ export const HomeScreen = () => {
           keyboardType='default'
           secureTextEntry={true} 
           value={password}
-          onChangeText={ text => setPassword(text)}
+          onChangeText={ text => onChange('password',text)}
         />
       </View>
 

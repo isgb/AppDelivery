@@ -12,7 +12,8 @@ const HomeViewModel = () => {
   }
 
   return {
-    ...values
+    ...values,
+    onChange
   }
 }
 
