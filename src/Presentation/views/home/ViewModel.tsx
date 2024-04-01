@@ -7,11 +7,14 @@ const HomeViewModel = () => {
     password: ''
   })
 
-  const onChange(property:string, value:any){
+  const onChange = (property:string, value:any) => {
     setValues({ ...values, [property]: value})
   }
 
-  return (
-    <div>HomeViewModel</div>
-  )
+  return {
+    ...values
+  }
 }
+
+
+export default HomeViewModel

@@ -6,9 +6,11 @@ import { RegisterScreen } from '../register/Register';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
 import { useState } from 'react';
+import useViewModel from './ViewModel'
 
 export const HomeScreen = () => {
 
+  const { email, password } = useViewModel();
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
