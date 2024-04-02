@@ -7,6 +7,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
 import { useState } from 'react';
 import useViewModel from './ViewModel'
+import { CustomTextInput } from '../../components/CustomTextInput';
 
 export const HomeScreen = () => {
 
@@ -33,6 +34,15 @@ export const HomeScreen = () => {
     <View style={styles.form}>
 
       <Text style={styles.formText}>INGRESAR</Text>
+
+      <CustomTextInput
+        image={require('../../../../assets/email.png')}
+        placeholder='Correo electrónico'
+        keyboardType='email-address'
+        property='email'
+        onChangeText={onChange}
+        value={email}
+      />
 
       <View style={styles.formInput}>
         <Image

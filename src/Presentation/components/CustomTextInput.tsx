@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, KeyboardType, StyleSheet, TextInput, View } from 'react-native'
 
 interface Props {
-    image : string,
+    image : any,
     placeholder: string,
     value: string,
     keyboardType: KeyboardType,
@@ -24,7 +24,7 @@ export const CustomTextInput = ({
         <View style={styles.formInput}>
     <Image
       style={styles.formIcon}
-      source={ require(image)}
+      source={image}
     />
 
     <TextInput
