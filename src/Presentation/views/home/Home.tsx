@@ -47,21 +47,6 @@ export const HomeScreen = () => {
       <View style={styles.formInput}>
         <Image
           style={styles.formIcon}
-          source={ require('../../../../assets/email.png')}
-        />
-
-        <TextInput
-          style={styles.formTextInput}
-          placeholder='Correo electrónico'
-          keyboardType='email-address'
-          value={email}
-          onChangeText={ text => onChange('email',text)}
-        />
-      </View>
-
-      <View style={styles.formInput}>
-        <Image
-          style={styles.formIcon}
           source={ require('../../../../assets/password.png')}
         />
 
