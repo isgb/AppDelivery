@@ -64,19 +64,25 @@ export const RegisterScreen = () => {
                     value={phone}
                 />
 
-                <View style={styles.formInput}>
-                    <Image
-                        style={styles.formIcon}
-                        source={require('../../../../assets/password.png')}
-                    />
+                <CustomTextInput
+                    placeholder='Contraseña'
+                    keyboardType='default'
+                    image={require('../../../../assets/password.png')}
+                    property='password'
+                    onChangeText={onChange}
+                    value={password}
+                    secureTextEntry={true}
+                />
 
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Contraseña'
-                        keyboardType='default'
-                        secureTextEntry={true}
-                    />
-                </View>
+                {/* <CustomTextInput
+                    placeholder='Confirmar Contraseña'
+                    keyboardType='default'
+                    image={require('../../../../assets/confirm_password.png')}
+                    property='confirmPassword'
+                    onChangeText={onChange}
+                    value={confirmPassword}
+                    secureTextEntry={true}
+                /> */}
 
                 <View style={styles.formInput}>
                     <Image
