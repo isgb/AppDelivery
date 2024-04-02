@@ -44,21 +44,15 @@ export const HomeScreen = () => {
         value={email}
       />
 
-      <View style={styles.formInput}>
-        <Image
-          style={styles.formIcon}
-          source={ require('../../../../assets/password.png')}
-        />
-
-        <TextInput
-          style={styles.formTextInput}
-          placeholder='Contraseña'
-          keyboardType='default'
-          secureTextEntry={true} 
-          value={password}
-          onChangeText={ text => onChange('password',text)}
-        />
-      </View>
+<CustomTextInput
+        image={require('../../../../assets/password.png')}
+        placeholder='Contraseña'
+        keyboardType='default'
+        property='password'
+        onChangeText={onChange}
+        value={password}
+        secureTextEntry={true} 
+      />
 
 
       <View 
