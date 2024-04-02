@@ -1,9 +1,14 @@
 import React from 'react'
 import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { RoundedButton } from '../../../Presentation/components/RoundedButton';
-
+import useViewModel from './ViewModel'
+import { CustomTextInput } from '../../components/CustomTextInput';
+import { Value } from '../../../../../../curso practica/Flipper-win/resources/app.asar.unpacked/defaultPlugins/flipper-plugin-databases/TypeBasedValueRenderer';
 
 export const RegisterScreen = () => {
+
+    const {name,lastname,email,phone,password, confirmPassword, onChange} = useViewModel();
+
     return (
         <View style={styles.container}>
             <Image
@@ -23,57 +28,41 @@ export const RegisterScreen = () => {
 
                 <Text style={styles.formText}>REGISTRARSE</Text>
 
-                <View style={styles.formInput}>
-                    <Image
-                        style={styles.formIcon}
-                        source={require('../../../../assets/user.png')}
-                    />
+                <CustomTextInput
+                    placeholder='Nombres'
+                    keyboardType='default'
+                    image={require('../../../../assets/user.png')}
+                    property='name'
+                    onChangeText={onChange}
+                    value={name}
+                />
 
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Nombres'
-                        keyboardType='default'
-                    />
-                </View>
+                <CustomTextInput
+                    placeholder='Apellidos'
+                    keyboardType='default'
+                    image={require('../../../../assets/my_user.png')}
+                    property='lastname'
+                    onChangeText={onChange}
+                    value={lastname}
+                />
 
-                <View style={styles.formInput}>
-                    <Image
-                        style={styles.formIcon}
-                        source={require('../../../../assets/my_user.png')}
-                    />
+                <CustomTextInput
+                    placeholder='Correo electrónico'
+                    keyboardType='email-address'
+                    image={require('../../../../assets/email.png')}
+                    property='email'
+                    onChangeText={onChange}
+                    value={email}
+                />
 
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Apellidos'
-                        keyboardType='default'
-                    />
-                </View>
-
-                <View style={styles.formInput}>
-                    <Image
-                        style={styles.formIcon}
-                        source={require('../../../../assets/email.png')}
-                    />
-
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Correo electrónico'
-                        keyboardType='email-address'
-                    />
-                </View>
-
-                <View style={styles.formInput}>
-                    <Image
-                        style={styles.formIcon}
-                        source={require('../../../../assets/phone.png')}
-                    />
-
-                    <TextInput
-                        style={styles.formTextInput}
-                        placeholder='Teléfono'
-                        keyboardType='numeric'
-                    />
-                </View>
+                <CustomTextInput
+                    placeholder='Teléfono'
+                    keyboardType='numeric'
+                    image={require('../../../../assets/phone.png')}
+                    property='phone'
+                    onChangeText={onChange}
+                    value={phone}
+                />
 
                 <View style={styles.formInput}>
                     <Image
