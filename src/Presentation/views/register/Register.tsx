@@ -4,10 +4,11 @@ import { RoundedButton } from '../../../Presentation/components/RoundedButton';
 import useViewModel from './ViewModel'
 import { CustomTextInput } from '../../components/CustomTextInput';
 import { Value } from '../../../../../../curso practica/Flipper-win/resources/app.asar.unpacked/defaultPlugins/flipper-plugin-databases/TypeBasedValueRenderer';
+import styles from '../../views/register/Styles'
 
 export const RegisterScreen = () => {
 
-    const {name,lastname,email,phone,password, confirmPassword, onChange} = useViewModel();
+    const {name,lastname,email,phone,password, confirmPassword, onChange, register} = useViewModel();
 
     return (
         <View style={styles.container}>
@@ -87,7 +88,7 @@ export const RegisterScreen = () => {
                 <View
                     style={{ marginTop: 30 }}
                 >
-                    <RoundedButton text='CONFIRMAR' onPress={() => ToastAndroid.show('HOLA', ToastAndroid.SHORT)} />
+                    <RoundedButton text='CONFIRMAR' onPress={() => register()} />
                 </View>
 
             </View>
@@ -96,75 +97,3 @@ export const RegisterScreen = () => {
     )
 }
 
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'black',
-    },
-    imageBackground: {
-        width: '100%',
-        height: '100%',
-        opacity: 0.7,
-        bottom: '30%'
-    },
-    formText: {
-        fontWeight: 'bold',
-        fontSize: 16
-    },
-    formIcon: {
-        width: 25,
-        height: 25,
-        marginTop: 5
-    },
-    formInput: {
-        flexDirection: 'row',
-        marginTop: 30
-    },
-    formTextInput: {
-        flex: 1,
-        borderBottomWidth: 1,
-        borderBottomColor: '#AAAAAA',
-        marginLeft: 15
-    },
-    form: {
-        width: '100%',
-        height: '75%',
-        backgroundColor: 'white',
-        position: 'absolute',
-        bottom: 0,
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40,
-        padding: 30
-    },
-    formRegister: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 20,
-    },
-    formRegisterText: {
-        fontStyle: 'italic',
-        color: 'orange',
-        borderBottomWidth: 1,
-        borderBottomColor: 'orange',
-        fontWeight: 'bold',
-        marginLeft: 10
-    },
-    logoContainer: {
-        position: 'absolute',
-        alignSelf: 'center',
-        top: '3%',
-        alignItems: 'center'
-    },
-    logoImage: {
-        width: 100,
-        height: 100
-    },
-    logoText: {
-        color: 'white',
-        textAlign: 'center',
-        fontSize: 15,
-        marginTop: 10,
-        fontWeight: 'bold'
-    },
-});

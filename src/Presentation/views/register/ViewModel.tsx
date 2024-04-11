@@ -15,9 +15,14 @@ const RegisterViewModel = () => {
         setValues({...values, [property]: value})
     }
 
+    const register = () => {
+      console.log(JSON.stringify(values))
+    }
+
   return {
     ...values,
-    onChange
+    onChange,
+    register
   }
 }
 
