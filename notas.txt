@@ -9,3 +9,4 @@ npm i @react-navigation/stack
 npm i react-native-loading-spinner-overlay
 npm i react-hook-form
 npm i react-native-async-storage/async-storage
+npm i axios
