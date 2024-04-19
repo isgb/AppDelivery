@@ -16,7 +16,7 @@ const RegisterViewModel = () => {
         setValues({...values, [property]: value})
     }
 
-    const register = () => {
+    const register = async () => {
       try {
 
         const response = await ApiDelivery.post('/users/create',values);
