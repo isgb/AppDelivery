@@ -70,7 +70,7 @@ const RegisterViewModel = () => {
         return false;
       }
 
-      if(values.password == values.confirmPassword){
+      if(values.password !== values.confirmPassword){
         setErrorMessage('Las contraseñas no coinciden');
         return false;
       }
@@ -82,7 +82,6 @@ const RegisterViewModel = () => {
     ...values,
     onChange,
     register,
-    isValidForm,
     errorMessage
   }
 }
