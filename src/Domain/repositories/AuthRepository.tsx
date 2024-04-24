@@ -1,7 +1,8 @@
-import { User } from '../entity/User';
+import { ResponseAPIDelivery } from '../../Data/sources/remote/models/ResponseApiDelivery';
+import { User } from '../entities/User';
 
-export default AuthRepository{
+export interface AuthRepository{
 
-    registerRootComponent(user:User): Promise<any>
+    register(user:User): Promise<ResponseAPIDelivery>
 
 }
