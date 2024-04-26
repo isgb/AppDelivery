@@ -16,7 +16,6 @@ export const LocalStorage = async () => {
             return item;
         } catch (error) {
             console.log("ERROR EN EL LOCAL STORAGE: " + error);
-            
         }
     }
 
