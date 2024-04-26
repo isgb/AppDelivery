@@ -17,7 +17,7 @@ const HomeViewModel = () => {
   
   const getUserSession = async() => {
     const user = await GetUserUseCase();
-    console.log("USUARIO SESION: ", JSON.stringify(user));
+    // console.log("USUARIO SESION: " + JSON.stringify(user));
   }
 
   const onChange = (property:string, value:any) => {
