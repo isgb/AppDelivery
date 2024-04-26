@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LoginAuthUseCase } from '../../../Domain/useCases/auth/LoginAuth';
 import { SaveUserUseCase } from '../../../Domain/useCases/userLocal/SaveUser';
 import { GetUserUseCase } from '../../../Domain/useCases/userLocal/GetUser';
+import { useUserLocal } from '../../hooks/useUserLocal';
 
 const HomeViewModel = () => {
 
@@ -10,6 +11,10 @@ const HomeViewModel = () => {
     email: '',
     password: ''
   })
+
+  const { user } = useUserLocal();
+  console.log("USUARIO DE SESION: " + JSON.stringify(user));
+  
 
   const onChange = (property:string, value:any) => {
     setValues({ ...values, [property]: value})
