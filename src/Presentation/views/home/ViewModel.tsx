@@ -19,6 +19,9 @@ const HomeViewModel = () => {
 
       const response = await LoginAuthUseCase(values.email, values.password)
       console.log("RESPONSE: " + JSON.stringify(response));
+      if(!response.success){
+        setErrorMessage(response.message);
+      }
       
     }
    
