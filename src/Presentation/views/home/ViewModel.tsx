@@ -11,15 +11,6 @@ const HomeViewModel = () => {
     password: ''
   })
 
-  useEffect(() => {
-    getUserSession();
-  }, [])
-  
-  const getUserSession = async() => {
-    const user = await GetUserUseCase();
-    console.log("USUARIO SESION: " + JSON.stringify(user));
-  }
-
   const onChange = (property:string, value:any) => {
     setValues({ ...values, [property]: value})
   }
