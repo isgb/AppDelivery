@@ -12,7 +12,7 @@ import styles from '../../views/home/Styles';
 
 export const HomeScreen = () => {
 
-  const { email, password, errorMessage ,onChange, login} = useViewModel();
+  const { email, password, errorMessage ,onChange, login, user} = useViewModel();
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
@@ -21,8 +21,16 @@ export const HomeScreen = () => {
       ToastAndroid.show(errorMessage, ToastAndroid.LONG);
     }
   }, [errorMessage])
-  
 
+  useEffect(() => {
+
+    if(user?.id !== null && user?.id !== undefined){
+      navigation.navigate('ProfileInfoScreen')
+    }
+
+  }, [user])
+  
+  
   return (
     <View style={styles.container}>
     <Image

@@ -52,6 +52,7 @@ const HomeViewModel = () => {
 
   return {
     ...values,
+    user,
     login,
     onChange,
     errorMessage
