@@ -5,16 +5,23 @@ import { StackNavigationState, useNavigation } from '@react-navigation/native';
 import { RegisterScreen } from '../register/Register';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useViewModel from './ViewModel'
 import { CustomTextInput } from '../../components/CustomTextInput';
 import styles from '../../views/home/Styles';
 
 export const HomeScreen = () => {
 
-  const { email, password, onChange} = useViewModel();
+  const { email, password, errorMessage ,onChange, login} = useViewModel();
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
+  useEffect(() => {
+    if(errorMessage !== ''){
+      ToastAndroid.show(errorMessage, ToastAndroid.LONG);
+    }
+  }, [errorMessage])
+  
 
   return (
     <View style={styles.container}>
@@ -64,10 +71,7 @@ export const HomeScreen = () => {
           onPress={() => {ToastAndroid.show('CLICK', ToastAndroid.LONG)}}
           color={'orange'}
         /> */}
-        <RoundedButton text='LOGIN' onPress={ () => {
-          console.log('Email: ' + email); 
-          console.log('Password: ' + password); 
-        }}/>
+        <RoundedButton text='LOGIN' onPress={ () => { login() }}/>
       </View>
 
       <View style={styles.formRegister}>

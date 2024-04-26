@@ -14,9 +14,14 @@ const HomeViewModel = () => {
   }
 
   const login = async () => {
-    const response = await LoginAuthUseCase(values.email, values.password)
-    console.log("RESPONSE: " + JSON.stringify(response));
-    
+
+    if(isValidForm()){
+
+      const response = await LoginAuthUseCase(values.email, values.password)
+      console.log("RESPONSE: " + JSON.stringify(response));
+      
+    }
+   
   }
 
   const isValidForm = (): boolean => {
@@ -35,7 +40,9 @@ const HomeViewModel = () => {
 
   return {
     ...values,
-    onChange
+    login,
+    onChange,
+    errorMessage
   }
 }
 
