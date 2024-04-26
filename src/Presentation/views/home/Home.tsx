@@ -3,18 +3,20 @@ import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpac
 import { RoundedButton } from '../../../Presentation/components/RoundedButton';
 import { StackNavigationState, useNavigation } from '@react-navigation/native';
 import { RegisterScreen } from '../register/Register';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
 import { useEffect, useState } from 'react';
 import useViewModel from './ViewModel'
 import { CustomTextInput } from '../../components/CustomTextInput';
 import styles from '../../views/home/Styles';
 
-export const HomeScreen = () => {
+interface Props extends StackScreenProps<RootStackParamList, 'HomeScreen'>{};
+
+export const HomeScreen = ({navigation, route} : Props) => {
 
   const { email, password, errorMessage ,onChange, login, user} = useViewModel();
 
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  // const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     if(errorMessage !== ''){
@@ -25,7 +27,7 @@ export const HomeScreen = () => {
   useEffect(() => {
 
     if(user?.id !== null && user?.id !== undefined){
-      navigation.navigate('ProfileInfoScreen')
+      navigation.navigate('ProfileInfoScreen');
     }
 
   }, [user])
