@@ -16,5 +16,8 @@ export const useUserLocal = () => {
         console.log("USUARIO SESION: " + JSON.stringify(user));
     }
 
-  return { user }
+  return { 
+    user,
+    getUserSession
+   }
 }

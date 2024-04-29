@@ -12,7 +12,7 @@ const HomeViewModel = () => {
     password: ''
   })
 
-  const { user } = useUserLocal();
+  const { user,getUserSession } = useUserLocal();
   console.log("USUARIO DE SESION: " + JSON.stringify(user));
   
 
@@ -30,6 +30,7 @@ const HomeViewModel = () => {
         setErrorMessage(response.message);
       }else{
         await SaveUserUseCase(response.data);
+        getUserSession();
       }
       
     }
