@@ -17,7 +17,7 @@ const RegisterViewModel = () => {
         confirmPassword: '',
     });
 
-    const [file, setFile] = useState<ImagePicker.ImageInfo>()
+    const [file, setFile] = useState<ImagePicker.ImagePickerAsset>()
 
     const pickImage = async () => {
       let result = await ImagePicker.launchImageLibraryAsync({
