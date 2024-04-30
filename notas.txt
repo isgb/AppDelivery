@@ -14,3 +14,17 @@ npm i axios
 // https://app.quicktype.io/
 
 npm i expo-image-picker
+
+app.json
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "custom photos permission",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to open the camera",
+
+          "//": "Disables the microphone permission",
+          "microphonePermission": false
+        }
+      ]
+    ],
