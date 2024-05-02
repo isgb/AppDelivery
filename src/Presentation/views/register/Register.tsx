@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Image, ScrollView, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { RoundedButton } from '../../../Presentation/components/RoundedButton';
 import useViewModel from './ViewModel'
 import { CustomTextInput } from '../../components/CustomTextInput';
 import { Value } from '../../../../../../curso practica/Flipper-win/resources/app.asar.unpacked/defaultPlugins/flipper-plugin-databases/TypeBasedValueRenderer';
 import styles from '../../views/register/Styles'
+import { ModalPickImage } from '../../components/ModalPickImage';
 
 export const RegisterScreen = () => {
 
     const { name, lastname, email, image, phone, password, confirmPassword,errorMessage ,onChange, register, pickImage } = useViewModel();
+    const [ modalVisible, setModalVisible ] = useState(false)
 
     useEffect(() => {
         if(errorMessage !== ""){
@@ -24,7 +26,7 @@ export const RegisterScreen = () => {
             />
 
             <View style={styles.logoContainer}>
-                <TouchableOpacity onPress={() => pickImage()}>
+                <TouchableOpacity onPress={() => setModalVisible(true)}>
                     {
                         image == ''
                         ?  <Image
@@ -113,6 +115,13 @@ export const RegisterScreen = () => {
                 </ScrollView>
 
             </View>
+
+            <ModalPickImage
+                openGallery={ pickImage }
+                openCamera={ pickImage }
+                modalUseState={ modalVisible }
+                setModalUseState={ setModalVisible } 
+            />
 
         </View>
     )
