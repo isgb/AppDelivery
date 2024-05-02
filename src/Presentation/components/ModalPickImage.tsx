@@ -26,13 +26,19 @@ export const ModalPickImage = ({ openGallery, openCamera, setModalUseState, moda
                         <Text>Selecciona una opción</Text>
                         <View style={styles.buttonContainer}>
                             <RoundedButton
-                                onPress={() => openGallery()}
+                                onPress={() => {
+                                    openGallery();
+                                    setModalUseState(false);
+                                }}
                                 text='Galeria'
                             />
                         </View>
                         <View style={styles.buttonContainer}>
                             <RoundedButton
-                                onPress={() => openCamera()}
+                                onPress={() => {
+                                    openCamera();
+                                    setModalUseState(false);
+                                }}
                                 text='Camara'
                             />
                         </View>
