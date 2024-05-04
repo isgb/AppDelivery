@@ -34,8 +34,9 @@ export class AuthRepositoryImpl implements AuthRepository{
                 name: file.uri.split('/').pop(),
                 type: mime.getType(file.uri)!
             });
+            data.append('user',JSON.stringify(user));
 
-            const response = await ApiDelivery.post<ResponseAPIDelivery>('/users/create/',user)
+            const response = await ApiDelivery.post<ResponseAPIDelivery>('/users/registerWithImage',data)
             console.log('REPSONSE REPOSITORY: ' + JSON.stringify(response.data));
             return Promise.resolve(response.data)
             
