@@ -29,3 +29,5 @@ app.json
       ]
     ],
 
+npm i mime
+npm i --save-dev @types/mime
