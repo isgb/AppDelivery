@@ -28,10 +28,11 @@ export class AuthRepositoryImpl implements AuthRepository{
         try {
 
             let data = new FormData();
+            // @ts-ignore
             data.append('image', {
                 uri: file.uri,
                 name: file.uri.split('/').pop(),
-                type: 
+                type: mime.getType(file.uri)!
             });
 
             const response = await ApiDelivery.post<ResponseAPIDelivery>('/users/create/',user)
