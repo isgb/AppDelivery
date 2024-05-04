@@ -54,7 +54,7 @@ const RegisterViewModel = () => {
 
       if(isValidForm()){
         //const response = await RegisterAuthUseCase(values); //2°
-        const response = await RegisterWithImageAuthUseCase(values, file!);
+        const response = await RegisterWithImageAuthUseCase(values as any, file!);
         console.log("RESULT: " + JSON.stringify(response));
       }
       
@@ -104,6 +104,11 @@ const RegisterViewModel = () => {
 
       if(values.password !== values.confirmPassword){
         setErrorMessage('Las contraseñas no coinciden');
+        return false;
+      }
+
+      if(values.image === ""){
+        setErrorMessage('Seleccione una imagen');
         return false;
       }
 
