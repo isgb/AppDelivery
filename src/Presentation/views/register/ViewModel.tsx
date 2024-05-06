@@ -3,6 +3,8 @@ import { ApiDelivery } from '../../../Data/sources/remote/api/ApiDelivery';
 import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
 import * as ImagePicker from 'expo-image-picker';
 import { RegisterWithImageAuthUseCase } from '../../../Domain/useCases/auth/RegisterWithImageAuth';
+import { SaveUserLocalUseCase } from '../../../Domain/useCases/userLocal/SaveUserLocal';
+import { useUserLocal } from '../../hooks/useUserLocal';
 
 const RegisterViewModel = () => {
   
@@ -18,7 +20,8 @@ const RegisterViewModel = () => {
         confirmPassword: '',
     });
 
-    const [file, setFile] = useState<ImagePicker.ImagePickerAsset>()
+    const [file, setFile] = useState<ImagePicker.ImagePickerAsset>();
+    const {user, getUserSession} = useUserLocal();
 
     const pickImage = async () => {
       let result = await ImagePicker.launchImageLibraryAsync({
