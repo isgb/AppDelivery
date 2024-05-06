@@ -1,5 +1,5 @@
 import { User } from '../../Domain/entities/User';
-import { ApiDelivery } from '../sources/remote/api/ApiDelivery';
+import { ApiDelivery, ApiDeliveryForImage } from '../sources/remote/api/ApiDelivery';
 import { ResponseAPIDelivery } from '../sources/remote/models/ResponseApiDelivery';
 import { AuthRepository } from '../../Domain/repositories/AuthRepository';
 import { AxiosError } from 'axios';
@@ -36,7 +36,7 @@ export class AuthRepositoryImpl implements AuthRepository{
             });
             data.append('user',JSON.stringify(user));
 
-            const response = await ApiDelivery.post<ResponseAPIDelivery>('/users/registerWithImage',data)
+            const response = await ApiDeliveryForImage.post<ResponseAPIDelivery>('/users/createWithImage/',data)
             console.log('REPSONSE REPOSITORY: ' + JSON.stringify(response.data));
             return Promise.resolve(response.data)
             
