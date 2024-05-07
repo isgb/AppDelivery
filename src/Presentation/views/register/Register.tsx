@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Image, ScrollView, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Button, Image, ScrollView, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import { RoundedButton } from '../../../Presentation/components/RoundedButton';
 import useViewModel from './ViewModel'
 import { CustomTextInput } from '../../components/CustomTextInput';
@@ -8,30 +8,32 @@ import styles from '../../views/register/Styles'
 import { ModalPickImage } from '../../components/ModalPickImage';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
+import { MyColors } from '../../theme/AppTheme';
 
-interface Props extends StackScreenProps<RootStackParamList, 'RegisterScreen'>{};
+interface Props extends StackScreenProps<RootStackParamList, 'RegisterScreen'> { };
 
-export const RegisterScreen = ({navigation, route}: Props) => {
+export const RegisterScreen = ({ navigation, route }: Props) => {
 
-    const { name, lastname, email, image, phone, password, confirmPassword,errorMessage ,onChange, register, pickImage, takePhoto } = useViewModel();
-    const [ modalVisible, setModalVisible ] = useState(false)
+    const { name, lastname, email, image, phone, password, confirmPassword, errorMessage, onChange, register, pickImage, takePhoto, user, loading } = useViewModel();
+    const [modalVisible, setModalVisible] = useState(false)
 
     useEffect(() => {
-        if(errorMessage !== ""){
+        if (errorMessage !== "") {
             ToastAndroid.show(errorMessage, ToastAndroid.LONG)
         }
     }, [errorMessage])
 
     useEffect(() => {
 
-        if(user?.id !== null && user?.id !== undefined){
-          navigation.replace('ProfileInfoScreen');
+        if (user?.id !== null && user?.id !== undefined) {
+            navigation.replace('ProfileInfoScreen');
         }
-    
-      }, [user])
-    
+
+    }, [user])
+
     return (
         <View style={styles.container}>
+
             <Image
                 source={require('../../../../assets/chef.jpg')}
                 style={styles.imageBackground}
@@ -41,18 +43,18 @@ export const RegisterScreen = ({navigation, route}: Props) => {
                 <TouchableOpacity onPress={() => setModalVisible(true)}>
                     {
                         image == ''
-                        ?  <Image
-                            source={require('../../../../assets/user_image.png')}
-                            style={styles.logoImage}
-                        />
-                        :  <Image
-                            source={{ uri: image }}
-                            style={styles.logoImage}
-                        />
+                            ? <Image
+                                source={require('../../../../assets/user_image.png')}
+                                style={styles.logoImage}
+                            />
+                            : <Image
+                                source={{ uri: image }}
+                                style={styles.logoImage}
+                            />
                     }
-                   
+
                 </TouchableOpacity>
-                
+
                 <Text style={styles.logoText}>SELECCIONE UNA IMÁGEN</Text>
             </View>
 
@@ -129,11 +131,20 @@ export const RegisterScreen = ({navigation, route}: Props) => {
             </View>
 
             <ModalPickImage
-                openGallery={ pickImage }
-                openCamera={ takePhoto }
-                modalUseState={ modalVisible }
-                setModalUseState={ setModalVisible } 
+                openGallery={pickImage}
+                openCamera={takePhoto}
+                modalUseState={modalVisible}
+                setModalUseState={setModalVisible}
             />
+
+            {
+                loading &&
+                <ActivityIndicator 
+                    style={styles.loading} 
+                    size="large" 
+                    color={MyColors.primary} 
+                />
+            }
 
         </View>
     )
