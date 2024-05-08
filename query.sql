@@ -14,11 +14,25 @@ INSERT INTO roles(
     updated_at
 )
 VALUES(
+	'RESTAURANTE',
+    '/restaurant/orders/list',
+    '2022-03-27',
+    '2022-03-27'
+);
+
+INSERT INTO roles(
+	name,
+    route,
+    created_at,
+    updated_at
+)
+VALUES(
 	'REPARTIDOR',
     '/delivery/orders/list',
     '2022-03-27',
     '2022-03-27'
 );
+
 
 INSERT INTO roles(
 	name,
@@ -28,20 +42,6 @@ INSERT INTO roles(
 )
 VALUES(
 	'CLIENTE',
-    '/client/products/list',
-    '2022-03-27',
-    '2022-03-27'
-);
-
-
-INSERT INTO roles(
-	name,
-    route,
-    created_at,
-    updated_at
-)
-VALUES(
-	'RESTAURANTE',
     '/client/products/list',
     '2022-03-27',
     '2022-03-27'
