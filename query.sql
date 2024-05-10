@@ -70,3 +70,29 @@ CREATE TABLE users(
     created_at TIMESTAMP(0) NOT NULL,
     updated_at TIMESTAMP(0) NOT NULL
 );
+
+USE udemy_delivery;
+
+SELECT
+        U.id,
+        U.email,
+        U.name,
+        U.lastname,
+        U.image,
+        U.phone,
+        U.password,
+        R.name
+    FROM
+        users AS U
+	INNER JOIN 
+        user_has_roles AS UHR
+	ON
+        UHR.id_user = U.id
+	INNER JOIN 
+        roles AS R
+	ON
+        UHR.id_rol = R.id
+    WHERE
+        email = 'luis@gmail.com'
+	GROUP BY 
+        
