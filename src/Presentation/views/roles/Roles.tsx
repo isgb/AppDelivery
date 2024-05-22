@@ -1,11 +1,18 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 import useViewModel from './ViewModel';
 
 export const RolesScreen = () => {
+
+    const {user} = useViewModel();
+
   return (
     <View>
-        <Text>RolesScreen</Text>
+        <FlatList
+            data={ user?.roles}
+            renderItem={({item}) => <Text>{item.name}</Text>}
+            keyExtractor={ (item) => item.id }
+        />
     </View>
   )
 }
