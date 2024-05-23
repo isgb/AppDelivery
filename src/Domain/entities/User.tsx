@@ -1,3 +1,5 @@
+import {Rol} from '../../Domain/entities/Rol';
+
 export interface User {
     id?:             string;
     name:            string;
