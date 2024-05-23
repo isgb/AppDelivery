@@ -24,22 +24,10 @@ export const RolesScreen = () => {
           width={width}
           height={width / 2}
           autoPlay={true}
-          data={[...new Array(6).keys()]}
-          scrollAnimationDuration={1000}
+          data={user?.roles!}
+          scrollAnimationDuration={5000}
           onSnapToItem={(index) => console.log('current index:', index)}
-          renderItem={({ index }) => (
-            <View
-              style={{
-                flex: 1,
-                borderWidth: 1,
-                justifyContent: 'center',
-              }}
-            >
-              <Text style={{ textAlign: 'center', fontSize: 30 }}>
-                {index}
-              </Text>
-            </View>
-          )}
+          renderItem={({item}) => <RolesItem rol={item} height={420} width={width - 100}/>}
         />
       </View>
     </GestureHandlerRootView>
