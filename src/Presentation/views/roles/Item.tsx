@@ -1,18 +1,29 @@
-import React from 'react'
-import { Image, Text, TouchableOpacity, View, StyleSheet } from 'react-native'
-import { Rol } from '../../../Domain/entities/Rol'
+import { StackNavigationProp } from '@react-navigation/stack';
+import React from 'react';
+import { Image, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { RootStackParamList } from '../../../../App'
+import { Rol } from '../../../Domain/entities/Rol';
 import { MyColors } from '../../theme/AppTheme'
 
 interface Props {
     rol: Rol,
     height: number,
     width: Number,
+    navigation: StackNavigationProp<RootStackParamList, "RolesScreen", undefined>
 }
 
-export const RolesItem = ({ rol, height, width }: Props) => {
+export const RolesItem = ({ rol, height, width, navigation }: Props) => {
     // console.log(rol.image);
     return (
         <TouchableOpacity
+            onPress={() => {
+                if (rol.name === 'ADMIN') {
+                    navigation.replace('AdminTabsNavigator');
+                }
+                else if (rol.name === 'CLIENTE') {
+                    navigation.replace('ClientTabsNavigator');
+                }
+            }}
             style={{ ...styles.container, height: height, width: width }}
         >
             <View style={styles.imageContainer}>
@@ -42,17 +53,17 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        resizeMode:'contain'
+        resizeMode: 'contain'
     },
     titleContainer: {
-        height:50,
+        height: 50,
         backgroundColor: MyColors.primary,
-        borderBottomLeftRadius:18,
-        borderBottomRightRadius:18,
-        alignItems:'center',
-        justifyContent:'center'
+        borderBottomLeftRadius: 18,
+        borderBottomRightRadius: 18,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-    title:{
-        color:"white"
+    title: {
+        color: "white"
     }
 })
