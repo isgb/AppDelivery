@@ -50,6 +50,7 @@ export const ClientTabsNavigator = () => {
         component={ProfileInfoScreen}
         options={{
           title: 'Perfil',
+          headerShown:false,
           tabBarLabel: 'Perfil',
           tabBarIcon: ({ color }) => (
             <Image
