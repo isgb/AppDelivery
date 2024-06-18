@@ -63,7 +63,9 @@ const ProfileInfoStyles = StyleSheet.create({
     logoImage:{
       width: 180,
       height:180,
-      borderRadius: 100
+      borderColor:'white',
+      borderRadius: 100,
+      borderWidth:2
     },
     logoText:{
       color:'white',

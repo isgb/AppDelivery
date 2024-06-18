@@ -19,7 +19,7 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
 
             <View style={styles.container}>
                 <Image
-                    source={require('../../../../../assets/chef.jpg')}
+                    source={require('../../../../../assets/city.jpg')}
                     style={styles.imageBackground}
                 />
 
