@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Image, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import useViewModel from './ViewModel';
-import { StackScreenProps } from '@react-navigation/stack';
+import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../../App';
 import styles from './Styles';
 import { useNavigation } from '@react-navigation/native';
@@ -11,7 +11,7 @@ import { RoundedButton } from '../../../components/RoundedButton';
 
 export const ProfileInfoScreen = () => {//{ navigation, route }: Props
 
-    const navigation = useNavigation<StackScreenProps<RootStackParamList>>();
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>(); // useNavigation<StackNavigationProp<{route: {} }>>()
     const { removeSession, user } = useViewModel();
 
     return (
