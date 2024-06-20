@@ -65,7 +65,7 @@ const ProfileInfoStyles = StyleSheet.create({
       height:180,
       borderColor:'white',
       borderRadius: 100,
-      borderWidth:2
+      borderWidth:5
     },
     logoText:{
       color:'white',
@@ -76,6 +76,7 @@ const ProfileInfoStyles = StyleSheet.create({
     },
     logout:{
         position: 'absolute',
+        alignSelf:'center',
         top:30,
         right:15
     },

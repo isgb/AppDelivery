@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Image, Text, Touchable, TouchableOpacity, View } from 'react-native'
+import { Button, Image, Pressable ,Text, Touchable, TouchableOpacity, View } from 'react-native'
 import useViewModel from './ViewModel';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../../App';
@@ -23,7 +23,7 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
                     style={styles.imageBackground}
                 />
 
-                <TouchableOpacity
+                <Pressable
                     style={ styles.logout }
                     onPress={() => {
                         removeSession();
@@ -34,7 +34,7 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
                         source={require('../../../../../assets/logout.png')}
                         style={styles.logoutImage}
                     />
-                </TouchableOpacity>
+                </Pressable>
 
                 <View style={styles.logoContainer}>
 
@@ -87,7 +87,9 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
                     </View>
 
                     <RoundedButton
-                        onPress={() => {}}
+                        onPress={() => {
+                            navigation.navigate('ProfileUpdateScreen')
+                        }}
                         text='ACTIALIZAR INFORMACIÓN'
                     />
 
