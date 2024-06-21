@@ -3,7 +3,7 @@ import { ActivityIndicator, Button, Image, ScrollView, StyleSheet, Text, TextInp
 import { RoundedButton } from '../../../../Presentation/components/RoundedButton';
 import useViewModel from './ViewModel'
 import { CustomTextInput } from '../../../components/CustomTextInput';
-import styles from '../../../views/register/Styles'
+import styles from '../../../views/profile/update/Styles'
 import { ModalPickImage } from '../../../components/ModalPickImage';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../../App';
@@ -13,7 +13,7 @@ interface Props extends StackScreenProps<RootStackParamList, 'ProfileUpdateScree
 
 export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
 
-    const { name, lastname, email, image, phone, password, confirmPassword, errorMessage, onChange, register, pickImage, takePhoto, user, loading } = useViewModel();
+    const { name, lastname, image, phone, onChangeInfoUpdate , errorMessage, onChange, register, pickImage, takePhoto, user, loading } = useViewModel();
     const [modalVisible, setModalVisible] = useState(false)
 
     useEffect(() => {
@@ -22,7 +22,10 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
         }
     }, [errorMessage])
 
-
+    useEffect(() => {
+        onChangeInfoUpdate(user?.name, user?.lastname,user?.phone)
+    }, [user])
+    
     return (
         <View style={styles.container}>
 
@@ -36,7 +39,7 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
                     {
                         image == ''
                             ? <Image
-                                source={require('../../../../../assets/user_image.png')}
+                                source={{ uri: user?.image }}
                                 style={styles.logoImage}
                             />
                             : <Image
@@ -74,7 +77,6 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
                         value={lastname}
                     />
 
-
                     <CustomTextInput
                         placeholder='Teléfono'
                         keyboardType='numeric'
@@ -83,7 +85,6 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
                         onChangeText={onChange}
                         value={phone}
                     />
-
 
                     <View
                         style={{ marginTop: 30 }}

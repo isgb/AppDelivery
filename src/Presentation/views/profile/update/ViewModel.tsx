@@ -54,6 +54,10 @@ const ProfileUpdateViewModel = () => {
         setValues({...values, [property]: value})
     }
 
+    const onChangeInfoUpdate = (name: string, lastname: string, phone: string) => {
+      setValues({...values, name ,lastname, phone})
+    }
+
     const register = async () => {
 
       if(isValidForm()){
@@ -136,7 +140,8 @@ const ProfileUpdateViewModel = () => {
     takePhoto,
     errorMessage,
     user,
-    loading
+    loading,
+    onChangeInfoUpdate,
   }
 }
 

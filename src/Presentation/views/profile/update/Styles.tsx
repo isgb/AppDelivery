@@ -8,7 +8,7 @@ const ProfileUpdateStyles = StyleSheet.create({
   imageBackground: {
       width: '100%',
       height: '100%',
-      opacity: 0.7,
+      opacity: 0.6,
       bottom: '30%'
   },
   formText: {
@@ -32,7 +32,7 @@ const ProfileUpdateStyles = StyleSheet.create({
   },
   form: {
       width: '100%',
-      height: '72%',
+      height: '55%',
       backgroundColor: 'white',
       position: 'absolute',
       bottom: 0,
@@ -56,7 +56,7 @@ const ProfileUpdateStyles = StyleSheet.create({
   logoContainer: {
       position: 'absolute',
       alignSelf: 'center',
-      top: '3%',
+      top: '8%',
       alignItems: 'center'
   },
   logoImage: {
