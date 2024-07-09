@@ -23,7 +23,7 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
     }, [errorMessage])
 
     useEffect(() => {
-        onChangeInfoUpdate(user?.name, user?.lastname,user?.phone)
+        onChangeInfoUpdate(user?.name!, user?.lastname!,user?.phone!)
     }, [user])
     
     return (
