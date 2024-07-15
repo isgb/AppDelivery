@@ -88,7 +88,7 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
 
                     <RoundedButton
                         onPress={() => {
-                            navigation.navigate('ProfileUpdateScreen')
+                            navigation.navigate('ProfileUpdateScreen', {user: user.user!})
                         }}
                         text='ACTIALIZAR INFORMACIÓN'
                     />

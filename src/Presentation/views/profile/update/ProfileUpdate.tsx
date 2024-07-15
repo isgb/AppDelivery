@@ -13,7 +13,8 @@ interface Props extends StackScreenProps<RootStackParamList, 'ProfileUpdateScree
 
 export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
 
-    const { name, lastname, image, phone, onChangeInfoUpdate , errorMessage, onChange, register, pickImage, takePhoto, user, loading } = useViewModel();
+    const { user } = route.params;
+    const { name, lastname, image, phone, onChangeInfoUpdate , errorMessage, onChange, register, pickImage, takePhoto, loading } = useViewModel();
     const [modalVisible, setModalVisible] = useState(false)
 
     useEffect(() => {

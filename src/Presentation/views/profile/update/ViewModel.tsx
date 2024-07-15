@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { ApiDelivery } from '../../../../Data/sources/remote/api/ApiDelivery';
-import { RegisterAuthUseCase } from '../../../../Domain/useCases/auth/RegisterAuth';
+// import { RegisterAuthUseCase } from '../../../../Domain/useCases/auth/RegisterAuth';
 import * as ImagePicker from 'expo-image-picker';
-import { RegisterWithImageAuthUseCase } from '../../../../Domain/useCases/auth/RegisterWithImageAuth';
+// import { RegisterWithImageAuthUseCase } from '../../../../Domain/useCases/auth/RegisterWithImageAuth';
 import { SaveUserLocalUseCase } from '../../../../Domain/useCases/userLocal/SaveUserLocal';
 import { useUserLocal } from '../../../hooks/useUserLocal';
+import { UpdateUserUseCase } from '../../../../Domain/useCases/user/UpdateUser';
+import { UpdateWithImageUserUseCase } from '../../../../Domain/useCases/user/UpdateWithImageUser';
+import { User } from '../../../../Domain/entities/User';
 
-const ProfileUpdateViewModel = () => {
+const ProfileUpdateViewModel = (user: User) => {
   
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -22,7 +25,7 @@ const ProfileUpdateViewModel = () => {
 
     const [loading, setLoading] = useState(false);
     const [file, setFile] = useState<ImagePicker.ImagePickerAsset>();
-    const {user, getUserSession} = useUserLocal();
+    // const {user, getUserSession} = useUserLocal();
 
     const pickImage = async () => {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -58,13 +61,15 @@ const ProfileUpdateViewModel = () => {
       setValues({...values, name ,lastname, phone})
     }
 
-    const register = async () => {
+    const update = async () => {
 
       if(isValidForm()){
         //const response = await RegisterAuthUseCase(values); //2°
 
         setLoading(true)
-        const response = await RegisterWithImageAuthUseCase(values as any, file!);
+
+        const response = await UpdateUserUseCase(values as any);
+        // const response = await RegisterWithImageAuthUseCase(values as any, file!);
         setLoading(false)
         console.log("RESULT: " + JSON.stringify(response));
         if(response.success){
@@ -99,33 +104,8 @@ const ProfileUpdateViewModel = () => {
         return false;
       }
 
-      if(values.email === ''){
-        setErrorMessage('Ingresa tu correo electrónico');
-        return false;
-      }
-
       if(values.phone === ''){
         setErrorMessage('Ingresa tu teléfono');
-        return false;
-      }
-
-      if(values.password === ''){
-        setErrorMessage('Ingresa tu contraseña');
-        return false;
-      }
-
-      if(values.confirmPassword === ''){
-        setErrorMessage('Ingresa la confirmación de la contraseña');
-        return false;
-      }
-
-      if(values.password !== values.confirmPassword){
-        setErrorMessage('Las contraseñas no coinciden');
-        return false;
-      }
-
-      if(values.image === ""){
-        setErrorMessage('Seleccione una imagen');
         return false;
       }
 

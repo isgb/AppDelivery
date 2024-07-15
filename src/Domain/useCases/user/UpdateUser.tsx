@@ -3,6 +3,6 @@ import { User } from "../../entities/User"
 
 const {update} = new UserLocalRepositoryImpl();
 
-export const UpdateUser = async (user: User) => {
+export const UpdateUserUseCase = async (user: User) => {
     return await update(user)
 }
