@@ -14,7 +14,7 @@ interface Props extends StackScreenProps<RootStackParamList, 'ProfileUpdateScree
 export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
 
     const { user } = route.params;
-    const { name, lastname, image, phone, onChangeInfoUpdate , errorMessage, onChange, register, pickImage, takePhoto, loading } = useViewModel();
+    const { name, lastname, image, phone, onChangeInfoUpdate , errorMessage, onChange, pickImage, takePhoto, loading , update} = useViewModel(user);
     const [modalVisible, setModalVisible] = useState(false)
 
     useEffect(() => {
@@ -23,10 +23,7 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
         }
     }, [errorMessage])
 
-    useEffect(() => {
-        onChangeInfoUpdate(user?.name!, user?.lastname!,user?.phone!)
-    }, [user])
-    
+ 
     return (
         <View style={styles.container}>
 
@@ -66,7 +63,7 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
                         image={require('../../../../../assets/user.png')}
                         property='name'
                         onChangeText={onChange}
-                        value={name}
+                        value={name || ''}
                     />
 
                     <CustomTextInput
@@ -75,7 +72,7 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
                         image={require('../../../../../assets/my_user.png')}
                         property='lastname'
                         onChangeText={onChange}
-                        value={lastname}
+                        value={lastname || ''}
                     />
 
                     <CustomTextInput
@@ -84,13 +81,13 @@ export const ProfileUpdateScreen = ({ navigation, route }: Props) => {
                         image={require('../../../../../assets/phone.png')}
                         property='phone'
                         onChangeText={onChange}
-                        value={phone}
+                        value={phone || ''}
                     />
 
                     <View
                         style={{ marginTop: 30 }}
                     >
-                        <RoundedButton text='CONFIRMAR' onPress={() => register()} />
+                        <RoundedButton text='CONFIRMAR' onPress={() => update()} />
                     </View>
 
                 </ScrollView>

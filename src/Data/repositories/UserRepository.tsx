@@ -6,7 +6,7 @@ import { AxiosError } from 'axios';
 import { ApiDelivery, ApiDeliveryForImage } from '../sources/remote/api/ApiDelivery';
 import mime from 'mime';
 
-export class UserLocalRepositoryImpl implements UserRepository {
+export class UserRepositoryImpl implements UserRepository {
     async update(user: User): Promise<ResponseAPIDelivery> {
         try {
 

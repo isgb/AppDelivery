@@ -8,24 +8,17 @@ import { useUserLocal } from '../../../hooks/useUserLocal';
 import { UpdateUserUseCase } from '../../../../Domain/useCases/user/UpdateUser';
 import { UpdateWithImageUserUseCase } from '../../../../Domain/useCases/user/UpdateWithImageUser';
 import { User } from '../../../../Domain/entities/User';
+import { ResponseAPIDelivery } from '../../../../Data/sources/remote/models/ResponseApiDelivery';
 
 const ProfileUpdateViewModel = (user: User) => {
   
     const [errorMessage, setErrorMessage] = useState('');
 
-    const [values, setValues] = useState({
-        name: '',
-        lastname:'',
-        phone: '',
-        email:'',
-        image: '',
-        password:'',
-        confirmPassword: '',
-    });
+    const [values, setValues] = useState(user);
 
     const [loading, setLoading] = useState(false);
     const [file, setFile] = useState<ImagePicker.ImagePickerAsset>();
-    // const {user, getUserSession} = useUserLocal();
+    const {getUserSession} = useUserLocal();
 
     const pickImage = async () => {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -65,11 +58,15 @@ const ProfileUpdateViewModel = (user: User) => {
 
       if(isValidForm()){
         //const response = await RegisterAuthUseCase(values); //2°
-
         setLoading(true)
+        let response = {} as ResponseAPIDelivery;
+        if(values.image?.includes('https://')){
+           response = await UpdateUserUseCase(values as any);
+        }
+        else{
+           response = await UpdateWithImageUserUseCase(values as any, file!);
+        }
 
-        const response = await UpdateUserUseCase(values as any);
-        // const response = await RegisterWithImageAuthUseCase(values as any, file!);
         setLoading(false)
         console.log("RESULT: " + JSON.stringify(response));
         if(response.success){
@@ -80,16 +77,6 @@ const ProfileUpdateViewModel = (user: User) => {
         }
       }
       
-      // try {
-
-      //   const response = await ApiDelivery.post('/users/create',values);
-      //   console.log("RESPONSE " + JSON.stringify(response));
-
-      // } catch (error) {
-      //   console.log("ERROR: " + error);
-        
-      // }
-      // console.log(JSON.stringify(values))
     }
 
     const isValidForm = ():boolean => {
@@ -115,7 +102,7 @@ const ProfileUpdateViewModel = (user: User) => {
   return {
     ...values,
     onChange,
-    register,
+    update,
     pickImage,
     takePhoto,
     errorMessage,
