@@ -12,7 +12,7 @@ const ProfileInfoViewModel = () => {
     // }
 
   return {
-    removeSession,
+    removeUserSession,
     user
   }
 }

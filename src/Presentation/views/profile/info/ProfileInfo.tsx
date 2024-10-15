@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Image, Pressable ,Text, Touchable, TouchableOpacity, View } from 'react-native'
 import useViewModel from './ViewModel';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
@@ -12,7 +12,13 @@ import { RoundedButton } from '../../../components/RoundedButton';
 export const ProfileInfoScreen = () => {//{ navigation, route }: Props
 
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>(); // useNavigation<StackNavigationProp<{route: {} }>>()
-    const { removeSession, user } = useViewModel();
+    const { user, removeUserSession } = useViewModel();
+
+    useEffect(() => {
+       if(user.id === ""){
+        navigation.replace('HomeScreen');
+       }
+    },[user])
 
     return (
         <View style={styles.container}>
@@ -26,8 +32,7 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
                 <Pressable
                     style={ styles.logout }
                     onPress={() => {
-                        removeSession();
-                        navigation.replace('HomeScreen');
+                        removeUserSession();
                     }}
                 >
                     <Image
@@ -38,11 +43,14 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
 
                 <View style={styles.logoContainer}>
 
-                    <Image
+                   { user?.image !== '' &&
+                     <Image
                         // source={require('../../../../../assets/logo.png')}
-                        source={{ uri: user?.user?.image }}
+                        // source={{ uri: user?.user?.image }}
+                        source={{ uri: user?.image }}
                         style={styles.logoImage}
                     />
+                   } 
 
                 </View>
 
@@ -55,7 +63,8 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
                             />
                         </View>
                         <View style={styles.formContent}>
-                            <Text>{user.user?.name} {user.user?.lastname}</Text>
+                            {/* <Text>{user.user?.name} {user.user?.lastname}</Text> */}
+                            <Text>{user?.name} {user?.lastname}</Text>
                             <Text style={styles.formTextDescription}>Nombre del usuario</Text>
                         </View>
                     </View>
@@ -68,7 +77,8 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
                             />
                         </View>
                         <View style={styles.formContent}>
-                            <Text>{user.user?.email}</Text>
+                            {/* <Text>{user.user?.email}</Text> */}
+                            <Text>{user?.email}</Text>
                             <Text style={styles.formTextDescription}>Correo electrónico</Text>
                         </View>
                     </View>
@@ -81,14 +91,16 @@ export const ProfileInfoScreen = () => {//{ navigation, route }: Props
                             />
                         </View>
                         <View style={styles.formContent}>
-                            <Text>{user.user?.phone}</Text>
+                            {/* <Text>{user.user?.phone}</Text> */}
+                            <Text>{user?.phone}</Text>
                             <Text style={styles.formTextDescription}>Teléfono</Text>
                         </View>
                     </View>
 
                     <RoundedButton
                         onPress={() => {
-                            navigation.navigate('ProfileUpdateScreen', {user: user.user!})
+                            // navigation.navigate('ProfileUpdateScreen', {user: user.user!})
+                            navigation.navigate('ProfileUpdateScreen', {user: user!})
                         }}
                         text='ACTIALIZAR INFORMACIÓN'
                     />
