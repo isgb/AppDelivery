@@ -2,8 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AdminCategoryListScreen } from '../views/admin/category/list/CategoryList';
 import { AdminOrderListScreen } from '../views/admin/order/list/OrderList';
 import  {ProfileInfoScreen}  from '../views/profile/info/ProfileInfo';
-import { Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Image, TouchableOpacity } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,24 +12,26 @@ export const AdminTabsNavigator = () => {
       <Tab.Screen 
         name="AdminCategoryListScreen" 
         component={AdminCategoryListScreen} 
-        options={{
-          title: 'Categorias',
-          tabBarLabel: 'Categorias',
-          tabBarIcon: ({color}) => (
-            <Image 
-              source={require('../../../assets/list.png')}
-              style={{ width:25, height: 25}}
-            />
-          ),
-          headerRight: () => (
-            <TouchableOpacity>
+        options={({route, navigation}) => (
+          {
+            title: 'Categorias',
+            tabBarLabel: 'Categorias',
+            tabBarIcon: ({color}) => (
               <Image 
-                source={require('../../../assets/add.png')}
-                style={{ width:25, height: 25, marginRight: 15}}
+                source={require('../../../assets/list.png')}
+                style={{ width:25, height: 25}}
               />
-            </TouchableOpacity>
-          )
-        }}
+            ),
+            headerRight: () => (
+              <TouchableOpacity onPress={() => navigation.navigate('AdminCategoryCreateScreen')}>
+                <Image 
+                  source={require('../../../assets/add.png')}
+                  style={{ width:25, height: 25, marginRight: 15}}
+                />
+              </TouchableOpacity>
+            )
+          }
+        )}
       />
       <Tab.Screen 
         name="AdminOrderListScreen" 
