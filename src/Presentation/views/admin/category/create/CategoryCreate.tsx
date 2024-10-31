@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { View ,Text, TouchableOpacity, Image, ActivityIndicator} from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View ,Text, TouchableOpacity, Image, ActivityIndicator, ToastAndroid} from 'react-native'
 import styles from './Styles'
 import { CustomTextInput } from '../../../../components/CustomTextInput'
 import useViewModel from './ViewModel'
@@ -9,8 +9,14 @@ import { MyColors, MyStyles } from '../../../../theme/AppTheme'
 
 export const AdminCategoryCreateScreen = () => {
 
-  const { name, description, onChange, successMessage, errorMessage, loading, image,pickImage, takePhoto } = useViewModel();
+  const { name, description, onChange, responseMessage, createCategory, loading, image,pickImage, takePhoto } = useViewModel();
   const [modalVisible, setModalVisible] = useState(false)
+
+  useEffect(() => {
+    if(responseMessage !== ''){
+     ToastAndroid.show(responseMessage, ToastAndroid.LONG)
+    }
+  }, [responseMessage])
 
   return (
     <View style={styles.container}>
@@ -34,28 +40,28 @@ export const AdminCategoryCreateScreen = () => {
         </TouchableOpacity>
         
         <View style={ styles.form }>
-            <CustomTextInput
+        <CustomTextInput 
                 placeholder='Nombre de la categoria'
-                image={ require('../../../../../../assets/categories.png') }
+                image={ require('../../../../../../assets/categories.png')}
                 keyboardType='default'
-                value={name}
-                onChangeText={onChange}
                 property='name'
+                value={name}
+                onChangeText={ onChange }
             />
-            <CustomTextInput
-                placeholder='Descripción'
-                image={ require('../../../../../../assets/description.png') }
+            <CustomTextInput 
+                placeholder='Descripcion'
+                image={ require('../../../../../../assets/description.png')}
                 keyboardType='default'
-                value={name}
-                onChangeText={onChange}
-                property='name'
+                property='description'
+                value={description}
+                onChangeText={ onChange }
             />
         </View>
 
         <View style={styles.buttonContainer}>
           <RoundedButton
             text='Crear categoria'
-            onPress={() => {}}
+            onPress={() => { createCategory() }}
           />
         </View>
 
