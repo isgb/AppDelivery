@@ -9,6 +9,19 @@ import axios from 'axios';
 
 export class CategoryRepositoryImpl implements CategoryRepository {
 
+
+    async getAll(): Promise<Category[]> {
+        try {
+            const response = await ApiDelivery.get<Category[]>('/categories/getAll')
+            return Promise.resolve(response.data);
+        } catch (error) {
+            let e = (error as AxiosError);
+            console.log("Error: "+ JSON.stringify(e.response?.data));
+            return Promise.resolve([])
+            
+        }
+    }
+
    async create(category: Category, file: ImagePicker.ImageInfo): Promise<ResponseAPIDelivery> {
         try {
 

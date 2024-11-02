@@ -31,3 +31,7 @@ app.json
 
 npm i mime
 npm i --save-dev @types/mime
+
+
+borrar cache 
+npm run android --reset-cache
