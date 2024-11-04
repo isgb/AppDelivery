@@ -12,7 +12,7 @@ export const AdminCategoryListScreen = () => {
   },[])
 
   return (
-    <View>
+    <View style={{ backgroundColor: 'white'}}>
       <FlatList
           data={categories}
           keyExtractor={(item) => item.id!}
