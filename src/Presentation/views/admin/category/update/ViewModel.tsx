@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import * as ImagePicker from 'expo-image-picker';
-import { CreateCategoryUseCase } from '../../../../../Domain/useCases/category/CreateCategory';
+import { UpdateCategoryUseCase } from '../../../../../Domain/useCases/category/UpdateCategory';
+import { UpdateWithImageCategoryUseCase } from '../../../../../Domain/useCases/category/UpdateWithImageCategory';
 import { Category } from '../../../../../Domain/entities/Category';
+import { ResponseAPIDelivery } from "../../../../../Data/sources/remote/models/ResponseApiDelivery";
 
 const AdminCategoryUpdateViewModel = (category: Category) => {
 
@@ -15,12 +17,17 @@ const AdminCategoryUpdateViewModel = (category: Category) => {
         setValues({ ...values, [property]: value})
     }
 
-    const createCategory = async() =>{
+    const updateCategory = async() =>{
       setLoading(true)
-      const response = await CreateCategoryUseCase(values as any,file!);
+      let response = {} as ResponseAPIDelivery
+      if(values.image?.includes('https://')){ // ACTUALIZAR SIN IMAGEN
+         response = await UpdateCategoryUseCase(values as any);
+      }
+      else{
+         response = await UpdateWithImageCategoryUseCase(values as any, file!);
+      }
       setLoading(false)
       setResponseMessage(response.message)
-      resetForm();
     }
 
     const pickImage = async () => {
@@ -49,21 +56,13 @@ const AdminCategoryUpdateViewModel = (category: Category) => {
         }
       }
 
-      const resetForm = async () => {
-        setValues({
-          name: '',
-          description: '',
-          image:''
-        })
-      }
-
       return{
         ...values,
         onChange,
         takePhoto,
         pickImage,
         responseMessage,
-        createCategory,
+        updateCategory,
         loading
       }
 }

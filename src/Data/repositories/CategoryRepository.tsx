@@ -48,6 +48,41 @@ export class CategoryRepositoryImpl implements CategoryRepository {
         }
     }
 
+    async update(category: Category): Promise<ResponseAPIDelivery> {
+        try {
+            const response = await ApiDelivery.put<ResponseAPIDelivery>('/categories/update', category)
+            return Promise.resolve(response.data)
+        } catch (error) {
+            let e = (error as AxiosError);
+            console.log("Error: "+ JSON.stringify(e.response?.data));
+            const apiError:ResponseAPIDelivery = JSON.parse(JSON.stringify(e.response?.data));
+            return Promise.resolve(apiError)
+        }
+    }
+
+    async updateWithImage(category: Category, file: ImagePicker.ImageInfo): Promise<ResponseAPIDelivery> {
+        try {
+            
+            let data = new FormData();
+            // @ts-ignore
+            data.append('image', {
+                uri: file.uri,
+                name: file.uri.split('/').pop(),
+                type: mime.getType(file.uri)!
+            });
+            data.append('category',JSON.stringify(category));
+
+            const response = await ApiDeliveryForImage.put<ResponseAPIDelivery>('/categories/updateWithImage',data)
+            console.log('REPSONSE REPOSITORY: ' + JSON.stringify(response.data));
+            return Promise.resolve(response.data)
+        } catch (error) {
+            let e = (error as AxiosError);
+            console.log("Error: "+ JSON.stringify(e.response?.data));
+            const apiError:ResponseAPIDelivery = JSON.parse(JSON.stringify(e.response?.data));
+            return Promise.resolve(apiError)
+        }
+    }
+
     async remove(id: String): Promise<ResponseAPIDelivery> {
         try {
             const response = await ApiDelivery.delete<ResponseAPIDelivery>(`/categories/delete/${id}`);
