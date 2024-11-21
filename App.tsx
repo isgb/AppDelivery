@@ -10,8 +10,4 @@ const App = () => {
   );
 };
 
-// const ContextState = ({ children }: any) => {
-//   return <CategoryProvider>{children}</CategoryProvider>;
-// };
-
 export default App;
