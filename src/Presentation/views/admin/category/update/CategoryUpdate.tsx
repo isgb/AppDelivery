@@ -7,9 +7,9 @@ import { RoundedButton } from '../../../../components/RoundedButton'
 import { ModalPickImage } from '../../../../components/ModalPickImage'
 import { MyColors, MyStyles } from '../../../../theme/AppTheme'
 import { StackScreenProps } from '@react-navigation/stack'
-import { RootStackParamList } from '../../../../../../App'
+import { CategoryStackParamList } from '../../../../navigator/AdminCategoryNavigator'
 
-interface Props extends StackScreenProps<RootStackParamList, 'AdminCategoryUpdateScreen'>{};
+interface Props extends StackScreenProps<CategoryStackParamList, 'AdminCategoryUpdateScreen'>{};
 
 export const AdminCategoryUpdateScreen = ({navigation, route}: Props) => {
 

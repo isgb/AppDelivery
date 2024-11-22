@@ -1,17 +1,18 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import * as ImagePicker from 'expo-image-picker';
 import { UpdateCategoryUseCase } from '../../../../../Domain/useCases/category/UpdateCategory';
 import { UpdateWithImageCategoryUseCase } from '../../../../../Domain/useCases/category/UpdateWithImageCategory';
 import { Category } from '../../../../../Domain/entities/Category';
 import { ResponseAPIDelivery } from "../../../../../Data/sources/remote/models/ResponseApiDelivery";
+import { CategoryContext } from "../../../../context/CategoryContext";
 
 const AdminCategoryUpdateViewModel = (category: Category) => {
 
     const [responseMessage, setResponseMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [file, setFile] = useState<ImagePicker.ImageInfo>();
-
-    const [values, setValues] = useState(category)
+    const [values, setValues] = useState(category);
+    const {update, updateWithImage} = useContext(CategoryContext)
 
     const onChange = (property:string, value:any) => {
         setValues({ ...values, [property]: value})
@@ -21,10 +22,12 @@ const AdminCategoryUpdateViewModel = (category: Category) => {
       setLoading(true)
       let response = {} as ResponseAPIDelivery
       if(values.image?.includes('https://')){ // ACTUALIZAR SIN IMAGEN
-         response = await UpdateCategoryUseCase(values as any);
+        //  response = await UpdateCategoryUseCase(values as any);
+        response = await update(values as any);
       }
       else{
-         response = await UpdateWithImageCategoryUseCase(values as any, file!);
+        //  response = await UpdateWithImageCategoryUseCase(values as any, file!);
+        response = await updateWithImage(values as any, file!);
       }
       setLoading(false)
       setResponseMessage(response.message)
