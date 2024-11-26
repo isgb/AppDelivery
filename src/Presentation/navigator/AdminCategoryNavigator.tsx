@@ -6,11 +6,13 @@ import { AdminCategoryCreateScreen } from "../views/admin/category/create/Catego
 import { AdminCategoryUpdateScreen } from "../views/admin/category/update/CategoryUpdate";
 import { AdminCategoryListScreen } from "../views/admin/category/list/CategoryList";
 import { Image, TouchableOpacity } from "react-native";
+import { AdminProductNavigator } from "./AdminProductNavigator";
 
 export type CategoryStackParamList = {
-  AdminCategoryListScreen: undefined;
-  AdminCategoryCreateScreen: undefined;
-  AdminCategoryUpdateScreen: { category: Category };
+  AdminCategoryListScreen: undefined,
+  AdminCategoryCreateScreen: undefined,
+  AdminCategoryUpdateScreen: { category: Category },
+  AdminProductNavigator: undefined
 };
 
 const Stack = createNativeStackNavigator<CategoryStackParamList>();
@@ -57,6 +59,11 @@ export const AdminCategoryNavigator = () => {
             headerShown: true,
             title: "Actualizar usuario",
           }}
+        />
+
+        <Stack.Screen
+          name="AdminProductNavigator"
+          component={AdminProductNavigator}
         />
       </Stack.Navigator>
     </CategoryState>
