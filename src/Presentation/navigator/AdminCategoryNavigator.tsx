@@ -12,7 +12,7 @@ export type CategoryStackParamList = {
   AdminCategoryListScreen: undefined,
   AdminCategoryCreateScreen: undefined,
   AdminCategoryUpdateScreen: { category: Category },
-  AdminProductNavigator: undefined
+  AdminProductNavigator: {category : Category}
 };
 
 const Stack = createNativeStackNavigator<CategoryStackParamList>();
@@ -48,7 +48,7 @@ export const AdminCategoryNavigator = () => {
           component={AdminCategoryCreateScreen}
           options={{
             headerShown: true,
-            title: "Actualizar usuario",
+            title: "Nueva usuario",
           }}
         />
 
