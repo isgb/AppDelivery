@@ -5,16 +5,19 @@ const AdminProductCreateScreenStyles = StyleSheet.create({
         flex: 1,
     },
     imageContainer:{
-        paddingTop: 50,
+        paddingTop: 40,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginHorizontal: 15
     },
     image:{
-        width: '100%',
-        height: 150,
+        width: 110,
+        height: 110,
         resizeMode: 'contain'
     },
     form:{
         backgroundColor: 'white',
-        height: '65%',
+        height: '70%',
         width: '100%',
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
@@ -23,10 +26,27 @@ const AdminProductCreateScreenStyles = StyleSheet.create({
         bottom: 0
     },
     buttonContainer:{
-        position: 'absolute',
-        bottom: 20,
-        left: 20,
-        right: 20,
+        marginTop:80
+        // position: 'absolute',
+        // bottom: 20,
+        // left: 20,
+        // right: 20,
+    },
+    categoryInfo:{
+        // flexDirection:'row',
+        marginTop: 30.,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    imageCategory:{
+        width:50,
+        height:50
+    },
+    textCategory:{
+        // marginLeft:10
+        color:'gray',
+        fontSize: 17,
+        fontWeight:'bold'
     }
 });
 
