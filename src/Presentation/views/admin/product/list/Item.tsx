@@ -1,19 +1,21 @@
 import React from 'react'
-import { Category } from '../../../../../Domain/entities/Category'
+import { Category } from '../../../../../Domain/entities/Category';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { CategoryStackParamList } from '../../../../navigator/AdminCategoryNavigator';
 import { Product } from '../../../../../Domain/entities/Product';
+import { ProductStackParamList } from '../../../../navigator/AdminProductNavigator';
 
 interface Props {
     product: Product;
-    remove: (id: string) => void;
+    category: Category;
+    remove: (product: Product) => void;
 }
 
-export const AdminProductListItem = ({ product, remove }: Props) => {
+export const AdminProductListItem = ({ product, category, remove }: Props) => {
 
-    const navigation = useNavigation<StackNavigationProp<CategoryStackParamList>>();
+    const navigation = useNavigation<StackNavigationProp<ProductStackParamList>>();
     
     return (
         <TouchableOpacity
@@ -33,7 +35,7 @@ export const AdminProductListItem = ({ product, remove }: Props) => {
 
                 <View style={styles.actionContainer}>
                     <TouchableOpacity
-                        // onPress={() => navigation.navigate('AdminCategoryUpdateScreen',{category:category})}
+                        onPress={() => navigation.navigate('AdminProductUpdateScreen',{product:product, category: category})}
                     >
                         <Image
                             style={styles.actionImage}
@@ -41,7 +43,7 @@ export const AdminProductListItem = ({ product, remove }: Props) => {
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => remove(product.id!)}
+                        onPress={() => remove(product)}
                     >
                         <Image
                             style={styles.actionImage}
