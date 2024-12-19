@@ -6,8 +6,9 @@ import { Product } from '../../Domain/entities/Product';
 import { ShoppingBagProvider } from '../context/ShoppingBagContext';
 import { TouchableOpacity, Image } from 'react-native';
 import { ClientShoppingBagScreen } from '../views/client/shopping_bag/ShoppingBag';
-// import { ClientAddressListScreen } from '../views/client/address/list/AddressList';
-// import { ClientAddressCreateScreen } from '../views/client/address/create/AddressCreate';
+import { ClientAddressListScreen } from '../views/client/address/list/AddressList';
+import { ClientAddressCreateScreen } from '../views/client/address/create/AddressCreate';
+import { ClientAddressMapScreen } from '../views/client/address/map/AddressMap';
 // import { ClientAddressMapScreen } from '../views/client/address/map/AddressMap';
 // import { ClientPaymentFormScreen } from '../views/client/payment/form/PaymentForm';
 // import { ClientPaymentInstallmentsScreen } from '../views/client/payment/installments/PaymentInstallments';
@@ -20,9 +21,9 @@ export type ClientStackParamList = {
     ClientProductListScreen: {idCategory: string},
     ClientProductDetailScreen: {product: Product},
     ClientShoppingBagScreen: undefined,
-    // ClientAddressListScreen: undefined,
-    // ClientAddressCreateScreen: { refPoint: string, latitude: number, longitude: number } | undefined,
-    // ClientAddressMapScreen: undefined,
+    ClientAddressListScreen: undefined,
+    ClientAddressCreateScreen: { refPoint: string, latitude: number, longitude: number } | undefined,
+    ClientAddressMapScreen: undefined,
     // ClientPaymentFormScreen: undefined,
     // ClientPaymentInstallmentsScreen: { cardToken: ResponseMercadoPagoCardToken },
     // ClientPaymentStatusScreen: { paymentData: ResponseMercadoPagoPayment },
@@ -87,7 +88,7 @@ export const ClientStackNavigator = () => {
             }}
         />
        
-        {/* <Stack.Screen 
+        <Stack.Screen 
             name='ClientAddressListScreen'
             component={ ClientAddressListScreen }
             options={ ({route, navigation}) => (
@@ -104,25 +105,25 @@ export const ClientStackNavigator = () => {
                 )
               }
             )}
-        /> */}
+        />
 
-        {/* <Stack.Screen 
+        <Stack.Screen 
           name='ClientAddressCreateScreen'
           component={ ClientAddressCreateScreen }
           options={{
             title: 'Nueva direccion',
             headerShown: true
           }}
-        /> */}
+        />
        
-        {/* <Stack.Screen 
+        <Stack.Screen 
           name='ClientAddressMapScreen'
           component={ ClientAddressMapScreen }
           options={{
             title: 'Ubica tu direccion en el mapa',
             headerShown: true
           }}
-        /> */}
+        />
         
         {/* <Stack.Screen 
           name='ClientPaymentFormScreen'
